@@ -1,4 +1,5 @@
 # experiment 3
+# investigate the association between changes in Lung-RADS scores and patient adherence across mulitple screening time points
 
 # Baseline predictors
 # Lung-RADS score: baseline_lr_category
