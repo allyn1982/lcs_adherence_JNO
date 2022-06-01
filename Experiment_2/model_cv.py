@@ -1,10 +1,9 @@
 import numpy as np
 from numpy import std, mean
-from pgmpy.estimators.MLE import MaximumLikelihoodEstimator
 from pgmpy.inference.ExactInference import VariableElimination
-from pgmpy.models.NaiveBayes import NaiveBayes
+from pgmpy.models.BayesianNetwork import BayesianNetwork
 from sklearn.metrics._classification import confusion_matrix
-from sklearn.metrics._ranking import precision_recall_curve, roc_auc_score
+from sklearn.metrics._ranking import roc_auc_score
 from sklearn.model_selection import RepeatedKFold, cross_val_score, GridSearchCV, KFold
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import CategoricalNB
@@ -70,33 +69,31 @@ class Model_cv:
         
         Output:
         A Naive Bayes model.
+
+        Note:
+        Do not use NaiveBayes() as NaiveBayes().fit() does not have complete_samples_only,
+        which needs to be set as False to include missing values
         """
-        nb_model = NaiveBayes()
         if model_type == 'full':
-            nb_model.add_nodes_from(['lungrads_12_3_4', 'age_new', 'sex_new', 'race_ethnicity_new',
-                                    'education_new', 'median_income_category_new', 'smoking_status_new',
-                                    'fam_hx_lc_new', 'comorbid_category_new', 'insurance_new',
-                                    'covid_expected_fu_date_lungrads_interval_new', 'department_new',
-                                    'distance_to_center_category_new', 'adi_category_new', 'adherence_altered'])
-            nb_model.add_edges_from([('adherence_altered', 'lungrads_12_3_4'),
-                                    ('adherence_altered', 'age_new'),
-                                    ('adherence_altered', 'sex_new'),
-                                    ('adherence_altered', 'race_ethnicity_new'),
-                                    ('adherence_altered', 'education_new'),
-                                    ('adherence_altered', 'median_income_category_new'),
-                                    ('adherence_altered', 'smoking_status_new'),
-                                    ('adherence_altered', 'fam_hx_lc_new'),
-                                    ('adherence_altered', 'comorbid_category_new'),
-                                    ('adherence_altered', 'insurance_new'),
-                                    ('adherence_altered', 'covid_expected_fu_date_lungrads_interval_new'),
-                                    ('adherence_altered', 'department_new'),
-                                    ('adherence_altered', 'distance_to_center_category_new'),
-                                    ('adherence_altered', 'adi_category_new')])
+            nb_model = BayesianNetwork([('adherence_altered', 'lungrads_12_3_4'),
+                      ('adherence_altered', 'age_new'),
+                      ('adherence_altered', 'sex_new'),
+                      ('adherence_altered', 'race_ethnicity_new'),
+                      ('adherence_altered', 'education_new'),
+                      ('adherence_altered', 'median_income_category_new'),
+                      ('adherence_altered', 'smoking_status_new'),
+                      ('adherence_altered', 'fam_hx_lc_new'),
+                      ('adherence_altered', 'comorbid_category_new'),
+                      ('adherence_altered', 'insurance_new'),
+                      ('adherence_altered', 'covid_expected_fu_date_lungrads_interval_new'),
+                      ('adherence_altered', 'department_new'),
+                      ('adherence_altered', 'distance_to_center_category_new'),
+                      ('adherence_altered', 'adi_category_new')])
         else: # simple model
-            nb_model.add_nodes_from(['lungrads_12_3_4', 'department_new', 'adherence_altered'])
-            nb_model.add_edges_from([('adherence_altered', 'lungrads_12_3_4'),
-                                      ('adherence_altered', 'department_new')])
+            nb_model = BayesianNetwork([('adherence_altered', 'lungrads_12_3_4'),
+                             ('adherence_altered', 'department_new')])
         return nb_model
+
 
     def get_feature_cols(self, model_type):
         """Function to get a list'of feature names.
@@ -138,7 +135,7 @@ class Model_cv:
             X_train['adherence_altered'] = y_train
             # fit model
             nb_model = self.nb_model(model_type=model_type)
-            nb_model.fit(X_train, estimator=MaximumLikelihoodEstimator)
+            nb_model.fit(X_train, complete_samples_only=False) # set complete_samples_only==False to include missing values
             # inference
             infer = VariableElimination(nb_model)
             if nb_model.check_model():
