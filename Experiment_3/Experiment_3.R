@@ -1,7 +1,29 @@
 # experiment 3
 
+# Baseline predictors
+# Lung-RADS score: baseline_lr_category
+# Age: baseline_age
+# Sex: sex_new
+# Race/ethnicity: baseline_race_ethnicity
+# Education: baseline_education
+# Smoking status: baseline_smoking_status
+# Family history of lung cancer: baseline_fam_hx_lc
+# Primary insurance: baseline_insurance
+# Age-adjusted Charlson Comorbidity Index: baseline_comorbid_category
+# Distance to screening center: baseline_distance_to_center_category
+# ADI state rank: baseline_adi_category
+# Type of referring physician: baseline_department
+# Median family income: baseline_median_income_category
+# COVID pause period: covid_expected_fu_date_lungrads_interval_new
+# Screening time point: ldct_index
+# Grouping for changes in Lung-RADS score over time: lr_change_modified_new
+
+# Outcome
+# Adherence: adherence_altered
+
 library(gee)
 
+# extract 95% CI for coefficients for variables of interest only
 get_CI <- function(model){
   print('Baseline LR 1-2, LR unchanged from T0 to T1, T0 vs T1')
   print(exp(coef(summary(model))['ldct_index2',1] + 
@@ -28,6 +50,8 @@ get_CI <- function(model){
   print(exp(coef(summary(model))['baseline_lr_category3-4:lr_change_modified_newchange:ldct_index3',1] + 
               qnorm(c(0.025, 0.975)) * coef(summary(model))['baseline_lr_category3-4:lr_change_modified_newchange:ldct_index3',4]))
 }
+
+# extract odds ratios for variables of interest only
 get_OR <- function(model){
   print('Baseline LR 1-2, LR unchanged from T0 to T1, T0 vs T1')
   print(exp(coef(summary(model))['ldct_index2',1]))
@@ -47,6 +71,7 @@ get_OR <- function(model){
   print(exp(coef(summary(model))['baseline_lr_category3-4:lr_change_modified_newchange:ldct_index3',1]))
 }
 
+# build gee model
 gee_analysis <- function(data){
   # adjusted model
   model_complete_adjusted <- gee(adherence_altered ~
