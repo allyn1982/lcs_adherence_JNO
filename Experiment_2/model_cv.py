@@ -72,7 +72,7 @@ class Model_cv:
 
         Note:
         Do not use NaiveBayes() as NaiveBayes().fit() does not have complete_samples_only,
-        which needs to be set as False to include missing values
+        which needs to be set as False to include observations with missing values
         """
         if model_type == 'full':
             nb_model = BayesianNetwork([('adherence_altered', 'lungrads_12_3_4'),
@@ -135,7 +135,7 @@ class Model_cv:
             X_train['adherence_altered'] = y_train
             # fit model
             nb_model = self.nb_model(model_type=model_type)
-            nb_model.fit(X_train, complete_samples_only=False) # set complete_samples_only=False to include missing values
+            nb_model.fit(X_train, complete_samples_only=False) # set complete_samples_only=False to include observations with missing values
             # inference
             infer = VariableElimination(nb_model)
             if nb_model.check_model():
