@@ -39,6 +39,6 @@ multi_lr_model <- function(my_data){
   round(exp(cbind(coef(model), confint(model))), digits = 2)
 }
 
-# run logistic regression on complete data - cases with missing values will be excluded automatically
-my_data_all <- read.csv('path_to_data')
+# run logistic regression on complete data 
+my_data_all <- read.csv('~/Dummy_Data_Experiment_1.csv') 
 multi_lr_model(my_data_all)
