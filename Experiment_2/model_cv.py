@@ -119,8 +119,8 @@ class Model_cv:
     def nb_cv(self, predictors, outcome, kf, model_type=None):
         """Function to cross validate Naive Bayes model using data sets with missing values.
         Input:
-        predictors: Pandas data frame of predictors
-        outcome: 1-d numpy array
+        predictors: a Pandas data frame of predictors
+        outcome: a 1-d numpy array
         kf: k-fold cross validation split
         model_type: 'full' or 'simple'
         
