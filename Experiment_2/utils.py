@@ -30,7 +30,7 @@ def train_data(data, var_df):
 
     Output:
     X: One-hot encoded data frame of predictors
-    y: outcome variable
+    y: 1-d numpy array
     """
     X = var_df.select_dtypes(exclude=['number']) \
         .apply(LabelEncoder().fit_transform) \
