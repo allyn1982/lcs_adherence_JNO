@@ -17,6 +17,8 @@
 # Median family income: median_income_category_new
 # COVID pause period: covid_expected_fu_date_lungrads_interval_new
 
+# Outcome
+# Adherence: adherence_altered
 
 multi_lr_model <- function(my_data){
   # multiviariable logistic regression model
@@ -30,10 +32,10 @@ multi_lr_model <- function(my_data){
                data = my_data,
                family = binomial(link="logit"))
   
-  # print number of observations for the model
+  # number of observations
   print(nobs(model))
   
-  # print coefficients and its 95% CI
+  # coefficients and its 95% CI
   round(exp(cbind(coef(model), confint(model))), digits = 2)
 }
 
