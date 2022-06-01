@@ -16,7 +16,7 @@ from sklearn.pipeline import Pipeline
 from Experiment_2.utils import get_var_dict
 
 class Model_cv:
-    """This is a Model class for nested cross validation.
+    """This is a Model class for nested cross validation on using complete case and imputed data sets.
     Input:
     None
     Output:
@@ -99,6 +99,13 @@ class Model_cv:
         return nb_model
 
     def get_feature_cols(self, model_type):
+        """Function to get a list'of feature names.
+        Input:
+        model_type: 'full' or 'simple'
+        
+        Output:
+        A list of feature names for full or simple model.
+        """
         if model_type == 'full':
             feature_cols = ['lungrads_12_3_4', 'age_new', 'sex_new', 'race_ethnicity_new',
                     'education_new', 'median_income_category_new', 'smoking_status_new',
@@ -110,14 +117,24 @@ class Model_cv:
         return feature_cols
 
     def nb_cv(self, predictors, outcome, kf, model_type=None):
+        """Function to cross validate Naive Bayes model using data sets with missing values.
+        Input:
+        predictors: a Pandas data frame of predictors
+        outcome: a 1-d numpy array
+        kf: k-fold cross validation split
+        model_type: 'full' or 'simple'
+        
+        Output:
+        Print evaluation metrics on validation sets. 
+        """
         recall_list, precision_list, acc_list, prauc_list, rocauc_list = [], [], [], [], []
         feature_cols = self.get_feature_cols(model_type=model_type)
-        print(feature_cols)
+        # print(feature_cols)
 
         for train_index, test_index in kf.split(predictors):
             X_train, X_test = predictors.iloc[train_index, :], predictors.iloc[test_index, :]
             y_train, y_test = outcome[train_index], outcome[test_index]
-            # add label to X_train
+            # add the outcome node (i.e., y_train) to X_train so that the data matrix contains data on all nodes
             X_train['adherence_altered'] = y_train
             # fit model
             nb_model = self.nb_model(model_type=model_type)
