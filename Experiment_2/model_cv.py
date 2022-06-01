@@ -64,6 +64,13 @@ class Model_cv:
         print('XGBoost: ', metric, ': %.3f (%.3f)' % (mean(scores_xg), std(scores_xg)))
 
     def nb_model(self, model_type):
+        """Function to create Naive Bayes models.
+        Input: 
+        model_type: 'full' or 'simple'
+        
+        Output:
+        A Naive Bayes model.
+        """
         nb_model = NaiveBayes()
         if model_type == 'full':
             nb_model.add_nodes_from(['lungrads_12_3_4', 'age_new', 'sex_new', 'race_ethnicity_new',
@@ -85,8 +92,8 @@ class Model_cv:
                                     ('adherence_altered', 'department_new'),
                                     ('adherence_altered', 'distance_to_center_category_new'),
                                     ('adherence_altered', 'adi_category_new')])
-        else:
-            nb_model.add_nodes_from(['lungrads_12_3_4', 'department_new'])
+        else: # simple model
+            nb_model.add_nodes_from(['lungrads_12_3_4', 'department_new', 'adherence_altered'])
             nb_model.add_edges_from([('adherence_altered', 'lungrads_12_3_4'),
                                       ('adherence_altered', 'department_new')])
         return nb_model
