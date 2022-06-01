@@ -31,6 +31,8 @@ class Train_cv:
         return ['recall', 'precision', 'accuracy', 'roc_auc']
 
     def train_nested(self):
+        """"Print results for each metric.
+        """
         metric_list = self.metric_list()
         for metric in metric_list:
             Model_cv().model_nested_cv(self.cv_inner, self.cv_outer, self.X, self.y, metric=metric)
@@ -45,7 +47,7 @@ class Train_cv:
 
 if __name__ == '__main__':
     full_complete_path = 'path_to_file'
-    full_missing_path='path_to_file'
+    full_missing_path = 'path_to_file'
     full_imputed_path = 'path_to_file'
     simple_complete_path = 'path_to_file'
     simple_missing_path = 'path_to_file'
