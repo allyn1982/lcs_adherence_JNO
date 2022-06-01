@@ -1,6 +1,6 @@
 # Identifying and modeling patient non-adherence to lung cancer screening across multiple screening time points.
-# Authors: Yannan Lin, Li-Jung Liang, Ruiwen Ding, Denise R Aberle, Ashley Elizabeth Prosper, William Hsu
-# Affiliation: UCLA
+*  Authors: Yannan Lin, Li-Jung Liang, Ruiwen Ding, Denise R Aberle, Ashley Elizabeth Prosper, William Hsu
+* Affiliation: UCLA
 
 In this article, we conducted three experiments.
 
