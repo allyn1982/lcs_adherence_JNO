@@ -40,14 +40,14 @@ def train_data(data, var_df):
 
 
 def get_var_dict(feature_cols, test_case):
-    """Function to
+    """Function to get a dictionary with keys being feature_cols and values being test_case.
     Input:
     feature_cols: names of variables to be included in the model
     test_case: values of predictors for each test case
 
     Output:
-    evidence_dict: a dictionary with the key being variable name
-    and value being the ground truth value for that feature
+    evidence_dict: a dictionary with keys being variable names
+    and values being the ground truth value for that feature
     """
     evidence_dict = {}
     for i in range(len(feature_cols)):
