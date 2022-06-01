@@ -3,8 +3,8 @@ from sklearn.preprocessing._label import LabelEncoder
 
 def create_var_df(data):
     """Function to select predictors for full models
-    Input: Pandas data frame
-    Output: Data frame including only predictors for full models
+    Input: a Pandas data frame
+    Output: a data frame including only predictors for full models
     """
     return data[['age_new', 'sex_new', 'race_ethnicity_new',
                  'smoking_status_new', 'education_new',
@@ -16,8 +16,8 @@ def create_var_df(data):
 
 def create_var_df_simple(data):
     """Function to select predictors for simple models
-    Input: Pandas data frame
-    Output: Data frame including only predictors for simple models
+    Input: a Pandas data frame
+    Output: a data frame including only predictors for simple models
     """
     return data[['lungrads_12_3_4', 'department_new']]
 
@@ -25,12 +25,12 @@ def create_var_df_simple(data):
 def train_data(data, var_df):
     """Function to one-hot-encode all non-numeric cols
     Input:
-    data: Pandas data frame
-    var_df: Data frame including predictors
+    data: a Pandas data frame
+    var_df: a data frame including predictors
 
     Output:
-    X: One-hot encoded data frame of predictors
-    y: 1-d numpy array
+    X: a One-hot encoded data frame of predictors
+    y: a 1-d numpy array
     """
     X = var_df.select_dtypes(exclude=['number']) \
         .apply(LabelEncoder().fit_transform) \
