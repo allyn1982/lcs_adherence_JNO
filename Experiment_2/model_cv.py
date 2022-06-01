@@ -135,7 +135,7 @@ class Model_cv:
             X_train['adherence_altered'] = y_train
             # fit model
             nb_model = self.nb_model(model_type=model_type)
-            nb_model.fit(X_train, complete_samples_only=False) # set complete_samples_only==False to include missing values
+            nb_model.fit(X_train, complete_samples_only=False) # set complete_samples_only=False to include missing values
             # inference
             infer = VariableElimination(nb_model)
             if nb_model.check_model():
