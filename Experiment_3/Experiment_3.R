@@ -78,7 +78,7 @@ gee_analysis <- function(data){
   # set ldct index as factor
   data$ldct_index <- as.factor(data$ldct_index)
   # reorder levels
-  data <- within(data, lr_change_modified_new <- relevel(lr_change_modified_new, ref = 2))
+  data <- within(data, lr_change_modified_new <- relevel(as.factor(lr_change_modified_new), ref = 2))
   levels(data$lr_change_modified_new)
   print(data$lr_change_modified_new)
   
