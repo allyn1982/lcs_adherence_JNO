@@ -21,6 +21,9 @@
 # Outcome
 # Adherence: adherence_altered
 
+# make sure 'glmnet' is installed
+if(!require(glmnet)) install.packages('glmnet', repos = "http://cran.us.r-project.org")
+
 # read data
 my_data = read.csv('~/Dummy_Data_Experiment_2_LASSO.csv')
 # create a data matrix for predictors
