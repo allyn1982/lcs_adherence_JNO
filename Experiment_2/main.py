@@ -16,15 +16,15 @@ if __name__ == '__main__':
     # cross validation splits
     cv_inner = KFold(n_splits=10, shuffle=True, random_state=1)
     # Note: in cv_outer, if using dummy data, change 10 to 3 to avoid getting an error for roc-auc: 'Only one class present in y_true. ROC AUC score is not defined in that case.'
-    cv_outer = RepeatedKFold(n_splits=3, n_repeats=5, random_state=1)
+    cv_outer = RepeatedKFold(n_splits=10, n_repeats=5, random_state=1)
 
     ####################################################################################################################
-    # first specify train or test
-    # options: 'cross validation', 'test'
+    # 1. Specify train or test
+    # Options: 'cross validation', 'test'
     cv_or_test = 'cross validation'
 
-    # then specify data type
-    # options: 'full_complete', 'simple_complete', 'full_imputed', 'simple_imputed', 'full_missing', 'simple_missing'
+    # 2. Specify training data type
+    # Options: 'full_complete', 'simple_complete', 'full_imputed', 'simple_imputed', 'full_missing', 'simple_missing'
     # Note: for testing final full model, specify 'full_imputed' as the final model was trained on the full complete data
     # Note: for testing final simple model, specify 'simple_complete' as the final model was trained on the simple complete data
     train_data_type = 'full_complete'
@@ -32,8 +32,10 @@ if __name__ == '__main__':
 
     print('------', cv_or_test, '------')
     if cv_or_test == 'test':
+        # during testing, only print 'full' or 'simple'
         print('------', train_data_type.split('_')[0], '------')
     else:
+        # during cross validation, print train_data_type
         print('------', train_data_type, '------')
 
     # cross validation on complete and imputed data sets
