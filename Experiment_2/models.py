@@ -10,7 +10,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn import svm, metrics
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from pgmpy.models import BayesianNetwork, NaiveBayes
+from pgmpy.models import BayesianNetwork
 from pgmpy.inference import VariableElimination
 import statistics
 import xgboost
