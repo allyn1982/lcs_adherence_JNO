@@ -14,4 +14,4 @@ In this article, we conducted three experiments.
 Notes:
 1. Dummy data is provided for each experiment to help run the model.
 2. When running each model, change the directory of the dummy data to your local directory.
-3. Experiment 2: When using dummy data in main_cv.py, set num_splits to 2 instead of 10 in Line 63 and Line 67.
+3. Experiment 2: When using dummy data in main.py, set num_splits to 2 instead of 10 in Line 19.
