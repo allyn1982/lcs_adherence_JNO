@@ -111,7 +111,7 @@ def build_nb_model(model_type=None):
 
 
 def get_feature_cols(model_type):
-    """Function to get a list'of feature names.
+    """Function to get a list of feature names.
     Input:
     model_type: 'full' or 'simple'
 
