@@ -5,13 +5,13 @@ from sklearn.linear_model import LogisticRegression
 
 if __name__ == '__main__':
     # data paths
-    full_complete_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_full_complete.csv'
-    full_missing_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_full_missing.csv'
-    full_imputed_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_full_imputed.csv'
-    simple_complete_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_simple_complete.csv'
-    simple_missing_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_simple_missing.csv'
-    simple_imputed_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_simple_imputed.csv'
-    test_data_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_test_data.csv'
+    full_complete_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_full_complete.csv'
+    full_missing_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_full_missing.csv'
+    full_imputed_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_full_imputed.csv'
+    simple_complete_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_simple_complete.csv'
+    simple_missing_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_simple_missing.csv'
+    simple_imputed_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_simple_imputed.csv'
+    test_data_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_test_data.csv'
 
     # complete and imputed data
     cv_inner = KFold(n_splits=10, shuffle=True, random_state=1)
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     # options: 'full_complete', 'simple_complete', 'full_imputed', 'simple_imputed', 'full_missing', 'simple_missing'
     # Note: for testing final full model, specify 'full_imputed' as the final model was trained on the full complete data
     # Note: for testing final simple model, specify 'simple_complete' as the final model was trained on the simple complete data
-    train_data_type = 'simple_missing'
+    train_data_type = 'full_complete'
     ####################################################################################################################
 
     print('------', cv_or_test, '------')
