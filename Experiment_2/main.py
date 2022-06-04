@@ -13,7 +13,7 @@ if __name__ == '__main__':
     simple_imputed_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_simple_imputed.csv'
     test_data_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_test_data.csv'
 
-    # complete and imputed data
+    # cross validation splits
     cv_inner = KFold(n_splits=10, shuffle=True, random_state=1)
     # Note: in cv_outer, if using dummy data, change 10 to 3 to avoid getting an error for roc-auc: 'Only one class present in y_true. ROC AUC score is not defined in that case.'
     cv_outer = RepeatedKFold(n_splits=3, n_repeats=5, random_state=1)
