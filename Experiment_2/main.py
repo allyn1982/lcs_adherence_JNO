@@ -16,17 +16,17 @@ def main(args=None):
     parser = parser.parse_args(args)
 
     # data paths
-    full_complete_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_full_complete.csv'
-    full_missing_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_full_missing.csv'
-    full_imputed_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_full_imputed.csv'
-    simple_complete_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_simple_complete.csv'
-    simple_missing_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_simple_missing.csv'
-    simple_imputed_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_simple_imputed.csv'
-    test_data_path = 'C:/Users/yannanlin/Desktop/Paper 3/code/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_test_data.csv'
+    full_complete_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_full_complete.csv'
+    full_missing_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_full_missing.csv'
+    full_imputed_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_full_imputed.csv'
+    simple_complete_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_simple_complete.csv'
+    simple_missing_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_simple_missing.csv'
+    simple_imputed_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_simple_imputed.csv'
+    test_data_path = '~/lcs_adherence/Experiment_2/Dummy_Data/Dummy_Data_Experiment_2_test_data.csv'
 
     # complete and imputed data
     cv_inner = KFold(n_splits=10, shuffle=True, random_state=1)
-    # Note: in cv_outer, if using dummy data, change 10 to 3 to avoid getting an error for roc-auc: 'Only one class present in y_true. ROC AUC score is not defined in that case.'
+    # Note: in cv_outer, if using dummy data, use n_splits=3 to avoid getting an error for roc-auc: 'Only one class present in y_true. ROC AUC score is not defined in that case.'
     cv_outer = RepeatedKFold(n_splits=parser.fold, n_repeats=5, random_state=1)
 
     # train or test
