@@ -10,9 +10,20 @@ In this article, we conducted three experiments.
 
 * Experiment_3: Investigating the association between changes in Lung-RADS scores and patient non-adherence to Lung-RADS recommendations across multiple screening time points.
 
+## Experiment 2 ##
+The machine leaning models can be trained and tested using the main.py script.
 
-Notes:
+Command Line examples:
+1. Cross validation on the complete data set for the parsimonious model
+
+`python main.py --fold 3 --cv_or_test cross_validation  --train_data_type simple_complete`
+
+2. Test the final full model
+
+`python main.py --fold 3 --cv_or_test cross_validation  --train_data_type simple_complete
+`
+
+## Notes ##
 1. Dummy data is provided for each experiment to help run the model.
 2. When running each model, change the directory of the dummy data to your local directory.
-3. Experiment 2: When using dummy data in main.py, set num_splits to 3 instead of 10 in Line 19.
-4. Experiment 2: When having import errors, check the versions of your python packages using requirements.txt.
+3. Experiment 2: When having import errors, check the versions of your python packages using requirements.txt.
