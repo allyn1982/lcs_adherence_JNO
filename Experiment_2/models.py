@@ -216,7 +216,7 @@ def test_results(classifier=None,  model_type=None, file_path=None, file_type=No
     classifier: specify the classifier
     model_type: 'full' or 'simple'
     file_path: path to training data
-    file_type: 'full_imputed' or 'simple_complete'
+    file_type: 'full_complete' or 'simple_imputed'
     test_path: path to hold out test data
 
     Output:
