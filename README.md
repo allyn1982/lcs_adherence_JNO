@@ -20,12 +20,12 @@ Command Line examples:
 
 2. Test the final full model
 
-`python main.py --cv_or_test test  --train_data_type full_imputed
+`python main.py --cv_or_test test  --train_data_type full_complete
 `
 
 3. Test the final parsimonious model
 
-`python main.py --cv_or_test test  --train_data_type simple_complete
+`python main.py --cv_or_test test  --train_data_type simple_imputed
 `
 
 ## Notes ##
