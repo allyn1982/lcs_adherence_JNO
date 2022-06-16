@@ -18,12 +18,12 @@ Command Line examples:
 
 `python main.py --fold 3 --cv_or_test cross_validation  --train_data_type simple_complete`
 
-2. Test the final full model
+2. Performance of the retrained full model on the hold out test set
 
 `python main.py --cv_or_test test  --train_data_type full_complete
 `
 
-3. Test the final parsimonious model
+3. Performance of the retrained parsimonious model on the hold out test set
 
 `python main.py --cv_or_test test  --train_data_type simple_imputed
 `
