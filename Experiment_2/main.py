@@ -11,7 +11,7 @@ def main(args=None):
     parser.add_argument('--fold', help='Specify k for cross validation. Use 3 if using dummy data.', type=int)
     parser.add_argument('--cv_or_test', help='Must be "cross_validation" or "test".')
     parser.add_argument('--train_data_type',
-                        help='Must be "full_complete", "full_imputed", "full_missing", "simple_complete", "simple_imputed", or "simple_missing". If testing final full model, use "full_imputed". If testing final simple model, use "simple_complete"')
+                        help='Must be "full_complete", "full_imputed", "full_missing", "simple_complete", "simple_imputed", or "simple_missing". If testing final full model, use "full_complete". If testing final simple model, use "simple_imputed"')
 
     parser = parser.parse_args(args)
 
@@ -59,13 +59,13 @@ def main(args=None):
         print_bn_results(X, y, cv_outer, model_type='simple')
 
     # testing final models
-    if parser.cv_or_test == 'test' and parser.train_data_type == 'full_imputed':
+    if parser.cv_or_test == 'test' and parser.train_data_type == 'full_complete':
         test_results(classifier=LogisticRegression(),
                      model_type='full',
                      file_path=full_imputed_path,
                      file_type='full_imputed',
                      test_path=test_data_path)
-    elif parser.cv_or_test == 'test' and parser.train_data_type == 'simple_complete':
+    elif parser.cv_or_test == 'test' and parser.train_data_type == 'simple_imputed':
         test_results(classifier=LogisticRegression(),
                      model_type='simple',
                      file_path=simple_complete_path,
