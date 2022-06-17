@@ -1,5 +1,5 @@
 # experiment 2
-# logistic regression with lasso for variable selection
+# lasso regression for variable selection
 # complete case data
 
 # Baseline predictors
