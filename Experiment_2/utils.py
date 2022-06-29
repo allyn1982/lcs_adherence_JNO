@@ -22,13 +22,13 @@ def create_var_df_simple(data):
 
 
 def train_data(data, var_df):
-    """Function to one-hot-encode all non-numeric cols
+    """Function to label encode all non-numeric cols
     Input:
     data: a Pandas data frame
     var_df: a data frame including predictors
 
     Output:
-    X: a One-hot encoded data frame of predictors
+    X: a encoded data frame of predictors
     y: a 1-d numpy array
     """
     X = var_df.select_dtypes(exclude=['number']) \
