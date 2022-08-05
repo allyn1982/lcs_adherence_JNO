@@ -22,20 +22,29 @@ def create_var_df_simple(data):
 
 
 def train_data(data, var_df):
-    """Function to label encode all non-numeric cols
+    """Function to one-hot/label encode all non-numeric cols
     Input:
     data: a Pandas data frame
     var_df: a data frame including predictors
 
     Output:
-    X: a encoded data frame of predictors
+    var_df: a One-hot/label encoded data frame of predictors
     y: a 1-d numpy array
     """
-    X = var_df.select_dtypes(exclude=['number']) \
-        .apply(LabelEncoder().fit_transform) \
-        .join(var_df.select_dtypes(include=['number']))
+    var_list = list(var_df.columns)
+    enc = LabelEncoder()
+    # transform x
+    for var in var_list:
+        if var == 'race_ethnicity_new' or var == 'insurance_new':
+            one_hot = pd.get_dummies(var_df[var])
+            # Drop column B as it is now encoded
+            var_df = var_df.drop(var, axis=1)
+            # Join the encoded df
+            var_df = var_df.join(one_hot)
+        else:
+            var_df[var] = enc.fit_transform(var_df[var])
     y = data[['adherence_altered']].values.flatten()
-    return X, y
+    return var_df, y
 
 def get_var_dict(feature_cols, test_case):
     """Function to get a dictionary with keys being feature_cols and values being test_case.
