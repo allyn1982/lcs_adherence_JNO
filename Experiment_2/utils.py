@@ -1,4 +1,5 @@
 from sklearn.preprocessing import LabelEncoder
+import pandas as pd
 
 def create_var_df(data):
     """Function to select predictors for full models
