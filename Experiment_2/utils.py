@@ -37,7 +37,7 @@ def train_data(data, var_df):
     for var in var_list:
         if var == 'race_ethnicity_new' or var == 'insurance_new':
             one_hot = pd.get_dummies(var_df[var])
-            # Drop column B as it is now encoded
+            # Drop column as it is now encoded
             var_df = var_df.drop(var, axis=1)
             # Join the encoded df
             var_df = var_df.join(one_hot)
