@@ -91,19 +91,11 @@ def build_nb_model(model_type=None):
     """
     if model_type == 'full':
         nb_model = BayesianNetwork([('adherence_altered', 'lungrads_12_3_4'),
-                                    ('adherence_altered', 'age_new'),
-                                    ('adherence_altered', 'sex_new'),
-                                    ('adherence_altered', 'race_ethnicity_new'),
                                     ('adherence_altered', 'education_new'),
                                     ('adherence_altered', 'median_income_category_new'),
-                                    ('adherence_altered', 'smoking_status_new'),
                                     ('adherence_altered', 'fam_hx_lc_new'),
                                     ('adherence_altered', 'comorbid_category_new'),
-                                    ('adherence_altered', 'insurance_new'),
-                                    ('adherence_altered', 'covid_expected_fu_date_lungrads_interval_new'),
-                                    ('adherence_altered', 'department_new'),
-                                    ('adherence_altered', 'distance_to_center_category_new'),
-                                    ('adherence_altered', 'adi_category_new')])
+                                    ('adherence_altered', 'department_new')])
     else:  # simple model
         nb_model = BayesianNetwork([('adherence_altered', 'lungrads_12_3_4'),
                                     ('adherence_altered', 'department_new')])
@@ -119,11 +111,10 @@ def get_feature_cols(model_type):
     A list of feature names for full or simple model.
     """
     if model_type == 'full':
-        feature_cols = ['lungrads_12_3_4', 'age_new', 'sex_new', 'race_ethnicity_new',
-                        'education_new', 'median_income_category_new', 'smoking_status_new',
-                        'fam_hx_lc_new', 'comorbid_category_new', 'insurance_new',
-                        'covid_expected_fu_date_lungrads_interval_new', 'department_new',
-                        'distance_to_center_category_new', 'adi_category_new']
+        feature_cols = ['lungrads_12_3_4',
+                        'education_new', 'median_income_category_new', 
+                        'fam_hx_lc_new', 'comorbid_category_new', 
+                        'department_new'']
     elif model_type == 'simple':
         feature_cols = ['lungrads_12_3_4', 'department_new']
     return feature_cols
