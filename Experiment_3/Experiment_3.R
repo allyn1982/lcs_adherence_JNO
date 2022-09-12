@@ -85,13 +85,11 @@ gee_analysis <- function(data){
   # adjusted model
   model_complete_adjusted <- gee(adherence_altered ~
                                    baseline_lr_category*lr_change_modified_new*ldct_index +
-                                   baseline_age + sex_new +
-                                   baseline_race_ethnicity+baseline_education+
-                                   baseline_smoking_status+ baseline_fam_hx_lc+
-                                   baseline_comorbid_category+baseline_insurance+
-                                   baseline_department+ baseline_distance_to_center_category +
-                                   baseline_adi_category+baseline_median_income_category+
-                                   covid_expected_fu_date_lungrads_interval_new,
+                                   baseline_education+
+                                   baseline_fam_hx_lc+
+                                   baseline_comorbid_category+
+                                   baseline_department+ 
+                                   baseline_median_income_category,
                                  data = data,
                                  id = research_id,
                                  family = binomial,
