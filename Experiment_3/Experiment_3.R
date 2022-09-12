@@ -107,7 +107,4 @@ gee_analysis <- function(data){
 no_imputation_data = read.csv("~/Dummy_Data_Experiment_3.csv")
 gee_analysis(no_imputation_data)
 
-# sensitivity analysis - with imputation
-imputed_data = read.csv("path_to_file")
-gee_analysis(imputed_data)
 
