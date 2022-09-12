@@ -6,12 +6,12 @@ def create_var_df(data):
     Input: a Pandas data frame
     Output: a data frame including only predictors for full models
     """
-    return data[['age_new', 'sex_new', 'race_ethnicity_new',
-                 'smoking_status_new', 'education_new',
-                 'fam_hx_lc_new', 'comorbid_category_new', 'lungrads_12_3_4',
-                 'insurance_new', 'distance_to_center_category_new',
-                 'department_new', 'adi_category_new', 'median_income_category_new',
-                 'covid_expected_fu_date_lungrads_interval_new']]
+    return data[['lungrads_12_3_4',
+                'education_new',
+                 'fam_hx_lc_new',
+                 'comorbid_category_new',
+                 'median_income_category_new',
+                 'department_new']]
 
 
 def create_var_df_simple(data):
