@@ -80,7 +80,6 @@ gee_analysis <- function(data){
   # reorder levels
   data <- within(data, lr_change_modified_new <- relevel(as.factor(lr_change_modified_new), ref = 2))
   levels(data$lr_change_modified_new)
-  print(data$lr_change_modified_new)
   
   # adjusted model
   model_complete_adjusted <- gee(adherence_altered ~
