@@ -4,19 +4,11 @@
 # Baseline predictors
 # id: research_id
 # Lung-RADS score: baseline_lr_category
-# Age: baseline_age
-# Sex: sex_new
-# Race/ethnicity: baseline_race_ethnicity
 # Education: baseline_education
-# Smoking status: baseline_smoking_status
 # Family history of lung cancer: baseline_fam_hx_lc
-# Primary insurance: baseline_insurance
 # Age-adjusted Charlson Comorbidity Index: baseline_comorbid_category
-# Distance to screening center: baseline_distance_to_center_category
-# ADI state rank: baseline_adi_category
 # Type of referring physician: baseline_department
 # Median family income: baseline_median_income_category
-# COVID pause period: covid_expected_fu_date_lungrads_interval_new
 # Screening time point: ldct_index
 # Grouping for changes in Lung-RADS score over time: lr_change_modified_new
 
