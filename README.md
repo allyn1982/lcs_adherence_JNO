@@ -8,7 +8,7 @@ In this article, we conducted three experiments.
 
 * Experiment_2: Using machine learning-based models to predict patient non-adherent to baseline Lung-RADS recommendations.
 
-* Experiment_3: Investigating the association between changes in Lung-RADS scores and patient non-adherence to Lung-RADS recommendations across multiple screening time points.
+* Experiment_3: Investigating the association between patterns in Lung-RADS scores and changes in patient non-adherence to Lung-RADS recommendations across multiple screening time points.
 
 ## Experiment 2 ##
 The machine leaning models can be trained and tested using the main.py script.
