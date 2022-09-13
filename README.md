@@ -14,18 +14,13 @@ In this article, we conducted three experiments.
 The machine leaning models can be trained and tested using the main.py script.
 
 Command Line examples:
-1. Cross validation on the complete data set for the parsimonious model
+1. Cross validation on the complete data set for the full model
 
-`python main.py --fold 3 --cv_or_test cross_validation  --train_data_type simple_complete`
+`python main.py --fold 3 --cv_or_test cross_validation  --train_data_type full_complete`
 
 2. Performance of the retrained full model on the hold out test set
 
 `python main.py --cv_or_test test  --train_data_type full_complete
-`
-
-3. Performance of the retrained parsimonious model on the hold out test set
-
-`python main.py --cv_or_test test  --train_data_type simple_imputed
 `
 
 ## Notes ##
