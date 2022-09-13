@@ -114,7 +114,7 @@ def get_feature_cols(model_type):
         feature_cols = ['lungrads_12_3_4',
                         'education_new', 'median_income_category_new', 
                         'fam_hx_lc_new', 'comorbid_category_new', 
-                        'department_new'']
+                        'department_new']
     elif model_type == 'simple':
         feature_cols = ['lungrads_12_3_4', 'department_new']
     return feature_cols
