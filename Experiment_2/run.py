@@ -23,7 +23,7 @@ train_nested(X, y_nonadherent)
 ###### naive bayes with missing values #####
 kf = RepeatedKFold(n_splits=3, random_state=1, n_repeats=5)
 # full model - missing values
-nb_full = BayesianNetwork([('adherence_altered', 'lungrads_12_3_4'),
+nb_model = BayesianNetwork([('adherence_altered', 'lungrads_12_3_4'),
                       ('adherence_altered', 'education_new'),
                       ('adherence_altered', 'median_income_category_new'),
                       ('adherence_altered', 'fam_hx_lc_new'),
@@ -35,7 +35,7 @@ feature_cols = ['lungrads_12_3_4',
        'department_new']
 X_missing = baseline_data_all.iloc[:,:-1]
 y_missing = baseline_data_all.iloc[:,-1]
-recall_list_missing, precision_list_missing, acc_list_mising, rocauc_list_missing = nb_cv(X_missing, y_missing, nb_full, kf, feature_cols)
+recall_list_missing, precision_list_missing, acc_list_mising, rocauc_list_missing = nb_cv(X_missing, y_missing, nb_model, kf, feature_cols)
 print_bbm_results(recall_list_missing, precision_list_missing, acc_list_mising, rocauc_list_missing)
 
 # test final full model using LR
