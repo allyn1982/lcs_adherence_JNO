@@ -20,6 +20,8 @@
 # Outcome
 # Adherence: adherence_altered
 
+require(caret)
+
 multi_lr_model <- function(my_data){
   # multiviariable logistic regression model
   model <- glm(adherence_altered ~ lungrads_12_3_4+age_new+
@@ -36,7 +38,10 @@ multi_lr_model <- function(my_data){
   print(nobs(model))
   
   # coefficients and its 95% CI
-  round(exp(cbind(coef(model), confint(model))), digits = 2)
+  print(round(exp(cbind(coef(model), confint(model))), digits = 2))
+  
+  # variable importance
+  print(varimp(model))
 }
 
 # run logistic regression on complete data 
